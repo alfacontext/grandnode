@@ -485,5 +485,6 @@ namespace Grand.Web.Controllers
         }
 
         #endregion
+        public virtual IActionResult Index() => View();
     }
 }
