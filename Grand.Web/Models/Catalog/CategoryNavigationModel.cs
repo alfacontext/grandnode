@@ -12,6 +12,7 @@ namespace Grand.Web.Models.Catalog
 
         public string CurrentCategoryId { get; set; }
         public List<CategorySimpleModel> Categories { get; set; }
+        
 
         public class CategoryLineModel : BaseModel
         {

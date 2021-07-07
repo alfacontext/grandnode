@@ -43,11 +43,10 @@ namespace Grand.Web.Components
 
         #region Invoker
 
-        public async Task<IViewComponentResult> InvokeAsync(string productId, int? productThumbPictureSize)
+        public async Task<IViewComponentResult> InvokeAsync(string productId, string categoryName, int? productThumbPictureSize)
         {
             var productIds = await _cacheBase.GetAsync(string.Format(ModelCacheEventConst.PRODUCTS_RELATED_IDS_KEY, productId, _storeContext.CurrentStore.Id),
                   async () => (await _productService.GetProductById(productId)).RelatedProducts.OrderBy(x => x.DisplayOrder).Select(x => x.ProductId2).ToArray());
-
             //load products
             var products = await _productService.GetProductsByIds(productIds);
 
@@ -58,7 +57,6 @@ namespace Grand.Web.Components
                 ProductThumbPictureSize = productThumbPictureSize,
                 Products = products
             });
-
             return View(model);
         }
 

@@ -40,12 +40,11 @@ namespace Grand.Web.Features.Handlers.Catalog
                 Language = request.Language,
                 Store = request.Store
             });
-
             var model = new CategoryNavigationModel {
                 CurrentCategoryId = activeCategoryId,
                 Categories = cachedModel.ToList()
             };
-
+            
             return model;
         }
     }

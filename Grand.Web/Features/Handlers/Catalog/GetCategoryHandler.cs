@@ -3,6 +3,7 @@ using Grand.Core.Caching;
 using Grand.Domain;
 using Grand.Domain.Catalog;
 using Grand.Domain.Media;
+using Grand.Domain.Stores;
 using Grand.Services.Catalog;
 using Grand.Services.Customers;
 using Grand.Services.Directory;
@@ -222,6 +223,14 @@ namespace Grand.Web.Features.Handlers.Catalog
                 PrepareSpecificationAttributes = _catalogSettings.ShowSpecAttributeOnCatalogPages,
                 Products = products.products,
             })).ToList();
+
+            for (var i = 0; i < model.Products.Count; i++)
+            {
+                model.DetailedProducts.Add(await _mediator.Send(new GetProductDetailsPage() {
+                    Product = products.products[i],
+                    Store = request.Store
+                }));
+            }
 
             model.PagingFilteringContext.LoadPagedList(products.products);
 

@@ -19,7 +19,9 @@ namespace Grand.Web.Models.Catalog
             ProductAttributeModels = new List<ProductAttributeModel>();
             ReviewOverviewModel = new ProductReviewOverviewModel();
         }
+        public ProductReviewOverviewModel ReviewOverviewModel { get; set; }
         public string Name { get; set; }
+        public string CategoryName { get; set; }
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
         public string SeName { get; set; }
@@ -50,10 +52,11 @@ namespace Grand.Web.Models.Catalog
         //product attributes 
         public IList<ProductAttributeModel> ProductAttributeModels { get; set; }
         
+        
         //price
-        public ProductReviewOverviewModel ReviewOverviewModel { get; set; }
-
-		#region Nested Classes
+        
+        #region Nested Classes
+        
         public partial class ProductPriceModel : BaseModel
         {
             public ProductPriceModel()

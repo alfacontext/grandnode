@@ -14,6 +14,7 @@ namespace Grand.Web.Models.Catalog
             PagingFilteringContext = new CatalogPagingFilteringModel();
             SubCategories = new List<SubCategoryModel>();
             CategoryBreadcrumb = new List<CategoryModel>();
+            DetailedProducts = new List<ProductDetailsModel>();
         }
         public string ParentCategoryId { get; set; }
         public string Name { get; set; }
@@ -33,6 +34,8 @@ namespace Grand.Web.Models.Catalog
         public IList<SubCategoryModel> SubCategories { get; set; }
         public IList<ProductOverviewModel> FeaturedProducts { get; set; }
         public IList<ProductOverviewModel> Products { get; set; }        
+        public IList<ProductDetailsModel> DetailedProducts { get; set; }
+           
 		#region Nested Classes
         public partial class SubCategoryModel : BaseEntityModel
         {

@@ -953,7 +953,6 @@ namespace Grand.Web.Controllers
                 PrepareSpecificationAttributes = true,
                 Products = products,
             })).ToList().ForEach(model.Products.Add);
-
             return View(model);
 
         }

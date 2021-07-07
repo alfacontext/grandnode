@@ -24,6 +24,8 @@ namespace Grand.Domain.Catalog
         /// Gets or sets the display order
         /// </summary>
         public int DisplayOrder { get; set; }
+        
+        public string CategoryName { get; set; }
 
     }
 

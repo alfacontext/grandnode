@@ -1,6 +1,10 @@
 ﻿using Grand.Core;
+using Grand.Core.Caching;
+using Grand.Core.Caching.Redis;
 using Grand.Domain.Catalog;
+using Grand.Domain.Data;
 using Grand.Domain.Media;
+using Grand.Domain.Security;
 using Grand.Domain.Tax;
 using Grand.Services.Catalog;
 using Grand.Services.Directory;
@@ -10,11 +14,13 @@ using Grand.Services.Media;
 using Grand.Services.Security;
 using Grand.Services.Seo;
 using Grand.Services.Tax;
+using Grand.Web.Areas.Admin.Models.Cms;
 using Grand.Web.Features.Models.Catalog;
 using Grand.Web.Features.Models.Products;
 using Grand.Web.Models.Catalog;
 using Grand.Web.Models.Media;
 using MediatR;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -94,7 +100,6 @@ namespace Grand.Web.Features.Handlers.Products
             };
 
             var tasks = new List<Task<ProductOverviewModel>>();
-
             foreach (var product in request.Products)
             {
                 tasks.Add(GetProductOverviewModel(product, request, displayPrices, enableShoppingCart, enableWishlist, pictureSize, priceIncludesTax, res));
