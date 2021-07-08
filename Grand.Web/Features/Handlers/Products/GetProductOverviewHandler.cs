@@ -102,6 +102,12 @@ namespace Grand.Web.Features.Handlers.Products
             var tasks = new List<Task<ProductOverviewModel>>();
             foreach (var product in request.Products)
             {
+                
+                IList<ProductDetailsModel> DetailedProducts = new List<ProductDetailsModel>();
+                DetailedProducts.Add(_mediator.Send(new GetProductDetailsPage() {
+                    Product = product,
+                    Store = _storeContext.CurrentStore
+                }).Result);
                 tasks.Add(GetProductOverviewModel(product, request, displayPrices, enableShoppingCart, enableWishlist, pictureSize, priceIncludesTax, res));
             }
             var result = await Task.WhenAll<ProductOverviewModel>(tasks);
@@ -146,6 +152,10 @@ namespace Grand.Web.Features.Handlers.Products
         private ProductOverviewModel PrepareProductOverviewModel(Product product)
         {
             var model = new ProductOverviewModel {
+                DetailedProducts = _mediator.Send(new GetProductDetailsPage() {
+                    Product = product,
+                    Store = _storeContext.CurrentStore
+                }).Result,
                 Id = product.Id,
                 Name = product.GetLocalized(x => x.Name, _workContext.WorkingLanguage.Id),
                 ShortDescription = product.GetLocalized(x => x.ShortDescription, _workContext.WorkingLanguage.Id),

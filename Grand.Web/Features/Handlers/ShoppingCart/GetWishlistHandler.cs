@@ -112,7 +112,7 @@ namespace Grand.Web.Features.Handlers.ShoppingCart
                 var product = await _productService.GetProductById(sci.ProductId);
                 if (!_aclService.Authorize(product))
                     continue;
-
+                
                 var cartItemModel = new WishlistModel.ShoppingCartItemModel {
                     Id = sci.Id,
                     Sku = product.FormatSku(sci.Attributes, _productAttributeParser),

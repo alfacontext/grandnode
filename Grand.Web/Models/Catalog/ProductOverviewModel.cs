@@ -18,7 +18,10 @@ namespace Grand.Web.Models.Catalog
             SpecificationAttributeModels = new List<ProductSpecificationModel>();
             ProductAttributeModels = new List<ProductAttributeModel>();
             ReviewOverviewModel = new ProductReviewOverviewModel();
+            DetailedProducts = new ProductDetailsModel();
         }
+        
+        public ProductDetailsModel DetailedProducts { get; set; }
         public ProductReviewOverviewModel ReviewOverviewModel { get; set; }
         public string Name { get; set; }
         public string CategoryName { get; set; }
