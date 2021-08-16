@@ -16,6 +16,9 @@ namespace Grand.Web.Models.Catalog
             CategoryBreadcrumb = new List<CategoryModel>();
             DetailedProducts = new List<ProductDetailsModel>();
         }
+
+        public string MinPrice { get; set; }
+        public string MaxPrice { get; set; }
         public string ParentCategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
