@@ -315,7 +315,7 @@ namespace Grand.Web.Controllers
             CatalogPagingFilteringModel command, [FromForm(Name = "maxPrice")] string maxPrice,
             [FromForm(Name = "minPrice")] string minPrice, [FromForm(Name = "attributes")] string[] attributes)
         {
-            Dictionary<string, List<string>> attributesList = new();
+            Dictionary<string, List<string>> attributesList = new Dictionary<string, List<string>>();
             foreach (var i in attributes)
             {
                 var key = i.Split(':')[0];
