@@ -61,7 +61,7 @@ namespace Grand.Web.ViewComponents
                 if (string.IsNullOrEmpty(logo))
                 {
                     //use default logo
-                    logo = string.Format("{0}://{1}/Themes/VueTheme/Content/images/images/img/dlogo.svg", HttpContext.Request.Scheme, HttpContext.Request.Host, _themeContext.WorkingThemeName);
+                    logo = string.Format("../../../../Themes/VueTheme/Content/images/images/img/dlogo.svg", HttpContext.Request.Scheme, HttpContext.Request.Host, _themeContext.WorkingThemeName);
                 }
                 return logo;
             });
